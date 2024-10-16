@@ -3,6 +3,7 @@ from sqlalchemy.exc import IntegrityError
 
 from forms.form import LoginForm, SignUpForm
 from models import User, db
+from flask_login import login_required, login_user, logout_user
 
 # Create a blueprint
 main = Blueprint('main', __name__)
@@ -60,6 +61,7 @@ def login():
             user = User.query.filter(User.username == username).first()
             if user:
                 if user.check_password(password):
+                    login_user(user, remember=True)
                     flash("Login successful")
                     return redirect( url_for('main.home'))
                 else:
@@ -71,7 +73,17 @@ def login():
             flash('Invalid form')
     return render_template('login.html', form = form)
 
+
 @main.route('/home.html', methods=['GET'])
+@login_required
 def home():
     return render_template('home.html')
+
+
+@main.route('/logout', methods=['POST'])
+@login_required
+def logout():
+    logout_user()
+    flash("Logout successful!")
+    return redirect(url_for('main.login'))
 

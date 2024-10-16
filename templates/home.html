@@ -1,5 +1,5 @@
 {% extends 'base.html' %}
-{% block title %}Login {% endblock %}
+{% block title %}Home {% endblock %}
 {% block head %}
   {{ super() }}
   <style type="text/css">
@@ -8,6 +8,12 @@
 {% endblock %}
 {% block content %}
     <div class="w-full flex justify-center flex-col">
-        <h1>Hi! Booster landed safe? Yessir</h1>
+        <h1 class="text-center">Hi {% if current_user.is_authenticated%}{{current_user.username}}{% endif%}! Booster landed safe? Yessir</h1>
     </div>
+
+    <form action="{{ url_for('main.logout') }}" method="POST" class="mt-4">
+        <button type="submit" class="text-blue-500 hover:text-blue-600 hover:cursor-pointer">
+            Logout
+        </button>
+    </form>
 {% endblock %}

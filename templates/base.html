@@ -7,7 +7,7 @@
     <title>{% block title %}{% endblock %} - My Webpage</title>
     {% endblock %}
   </head>
-  <body class="w-full h-100vh flex justify-center flex-col">
+  <body class="w-full h-100vh flex justify-center flex-col items-center">
     <div id="content" class="flex justify-center w-full items-center">{% block content %}{% endblock %}</div>
     {% with messages = get_flashed_messages() %}
   {% if messages %}
