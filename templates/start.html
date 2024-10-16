@@ -7,13 +7,8 @@
   </style>
 {% endblock %}
 {% block content %}
-  <h1>Index</h1>
-  <p class="important">
-    Welcome on my awesome homepage.
-    </p>
-    {% if name %}
-    <p>My name is {{name}}</p>
-    {%else%}
-    <p>Name not provided</p>
-    {%endif%}
+  <div class="flex justify-center flex-col">
+    <p>Landed on the right place! 🚀</p>
+    <a href="/login.html" class="underline text-blue-500">Login</a>
+  </div>
 {% endblock %}

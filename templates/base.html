@@ -2,12 +2,13 @@
 <html>
   <head>
     {% block head %}
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>{% block title %}{% endblock %} - My Webpage</title>
     {% endblock %}
   </head>
-  <body>
-    <div id="content">{% block content %}{% endblock %}</div>
+  <body class="w-full h-100vh flex justify-center flex-col">
+    <div id="content" class="flex justify-center w-full items-center">{% block content %}{% endblock %}</div>
     {% with messages = get_flashed_messages() %}
   {% if messages %}
     <ul class=flashes>
@@ -17,9 +18,9 @@
     </ul>
   {% endif %}
 {% endwith %}
-    <div id="footer">
+    <div id="footer" class="self-center flex justify-center">
       {% block footer %}
-      &copy; Copyright 2024 by <a href="https://portfolio-5pu1.vercel.app/">Titus</a>.
+      &copy; Copyright 2024 by <a target="_blank" href="https://portfolio-5pu1.vercel.app/" class="underline text-blue-500">Titus</a>.
       {% endblock %}
     </div>
   </body>
