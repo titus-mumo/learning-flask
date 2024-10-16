@@ -12,30 +12,37 @@
   </style>
 
   </head>
-  <body class="w-full h-100vh flex justify-center flex-col">
-    <div id="content" class="flex justify-center w-full items-center">
-    <form class="max-w-md w-full">
-        <h1>Login</h1>
+  <body class="w-full h-screen justify-between flex flex-col items-center">
+    <div id="content" class="flex justify-center w-full items-center pt-10 md:pt-20">
+    <form method="POST" action="" class="max-w-md w-full">
+        <input id="csrf_token" name="csrf_token" type="hidden" value="IjA1NGEzOTdkNTQyMGJkMTM5NmM2ZjZkNDJiYzg3MGM3Y2I0ZDk3YjQi.ZxA07Q.JD6jUlNRwq7LC_02GXu2AcQqhsw">
         <div class="w-full">
-            <label for="username">Username</label>
-            <br>
-            <input type="text" name="username" id="username" placeholder="username" class="w-full px-2 py-2.5 shadow-sm border-1 border-gry-900 rounded-md"/>
+            <label class="px-2 my-1" for="username">Username</label>
+            <input class="w-full px-2 py-2.5 shadow-sm border-1 border-gry-900 rounded-md" id="username" minlength="4" name="username" placeholder="Enter your username" required type="text" value="">
+            
         </div>
         <div class="w-full">
-            <label for="password">Password</label>
-            <br>
-            <input type="password" name="password" id="password" placeholder="password" class="w-full px-2 py-2.5 shadow-sm border-1 border-gry-900 rounded-md"/>
+            <label class="px-2 my-1" for="password">Password</label>
+            <input class="w-full px-2 py-2.5 shadow-sm border-1 border-gry-900 rounded-md" id="password" minlength="6" name="password" placeholder="Enter your password" required type="password" value="">
+            
         </div>
-        <button type="submit" class="bg-green-500 w-full p-2 text-white my-1 rounded-md">Login</button>
+        <p>Not registered? <a class="text-blue-500 underline" href="/signup.html">Sign up</a></p>
+        <div class="flex items-center justify-between">
+            <input class="bg-blue-500 w-full p-2 text-white my-1 rounded-md" id="submit" name="submit" type="submit" value="Login">
+        </div>
     </form>
 </div>
+    <div id="footer" class="self-center w-full flex justify-between">
+        <div>
+        
+      
     
-  
-
-    <div id="footer" class="self-center flex justify-center">
-      
-      &copy; Copyright 2024 by <a href="https://portfolio-5pu1.vercel.app/">Titus</a>.
-      
     </div>
+        <div>
+          
+          &copy; Copyright 2024 by <a target="_blank" href="https://portfolio-5pu1.vercel.app/" class="underline text-blue-500">Titus</a>.
+          
+        </div>
+        </div>
   </body>
 </html>

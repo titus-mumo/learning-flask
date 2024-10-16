@@ -1,6 +1,8 @@
 from flask_frozen import Freezer
 
-from init import app
+from init import create_app
+
+app  = create_app()
 
 app.config['FREEZER_RELATIVE_URLS'] = True
 

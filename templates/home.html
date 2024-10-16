@@ -9,11 +9,15 @@
 {% block content %}
     <div class="w-full flex justify-center flex-col">
         <h1 class="text-center">Hi {% if current_user.is_authenticated%}{{current_user.username}}{% endif%}! Booster landed safe? Yessir</h1>
-    </div>
+        <a href="/add.html" class="underlined text-blue-500 self-center">Add a new chess piece</a>
+        <div class="flex justify-center self-center w-full max-w-sm flex-col ">
 
-    <form action="{{ url_for('main.logout') }}" method="POST" class="mt-4">
-        <button type="submit" class="text-blue-500 hover:text-blue-600 hover:cursor-pointer">
-            Logout
-        </button>
-    </form>
+            {% for chess_piece in chess_pieces%}
+                <div class="flex justify-between flex-row self-start w-full">
+                    <p>{{ chess_piece.name}}</p>
+                    <p>{{ chess_piece.points}}</p>
+                </div>
+            {% endfor%}
+        </div>
+    </div>
 {% endblock %}

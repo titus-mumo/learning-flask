@@ -1,0 +1,33 @@
+{% extends 'base.html' %}
+
+
+{% block title %}Add {% endblock %}
+{% block head %}
+  {{ super() }}
+  <style type="text/css">
+    .important { color: #336699; }
+  </style>
+{% endblock %}
+{% block content %}
+    <form method="POST" action="" class="max-w-md w-full">
+        {{ form.hidden_tag() }}
+        <div class="w-full">
+            {{ form.name.label(class="px-2 my-1") }}
+            {{ form.name(class="w-full px-2 py-2.5 shadow-sm border-1 border-gry-900 rounded-md", placeholder="Enter chess piece name") }}
+            {% for error in form.name.errors %}
+                <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <div class="w-full">
+            {{ form.points.label(class="px-2 my-1") }}
+            {{ form.points(class="w-full px-2 py-2.5 shadow-sm border-1 border-gry-900 rounded-md", placeholder="Enter piece's points") }}
+            {% for error in form.points.errors %}
+                <div class="text-red-500 text-sm mt-1">{{ error }}</div>
+            {% endfor %}
+        </div>
+        <p>Return to home page? <a class="text-blue-500 underline" href="/home.html">home</a></p>
+        <div class="flex items-center justify-between">
+            {{ form.submit(class="bg-blue-500 w-full p-2 text-white my-1 rounded-md") }}
+        </div>
+    </form>
+{% endblock %}

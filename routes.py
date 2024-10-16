@@ -1,8 +1,8 @@
 from flask import Blueprint, render_template, flash, request, redirect, url_for
 from sqlalchemy.exc import IntegrityError
 
-from forms.form import LoginForm, SignUpForm
-from models import User, db
+from forms.form import LoginForm, SignUpForm, ChessPieceForm
+from models import User, db, ChessPiece
 from flask_login import login_required, login_user, logout_user
 
 # Create a blueprint
@@ -77,13 +77,34 @@ def login():
 @main.route('/home.html', methods=['GET'])
 @login_required
 def home():
-    return render_template('home.html')
+    chess_pieces = ChessPiece.query.all()
+    return render_template('home.html', chess_pieces = chess_pieces)
 
 
-@main.route('/logout', methods=['POST'])
+@main.route('/logout.html', methods=['POST', 'GET'])
 @login_required
 def logout():
     logout_user()
     flash("Logout successful!")
     return redirect(url_for('main.login'))
 
+@main.route('/add.html', methods=['GET', 'POST'])
+@login_required
+def add_chess_piece():
+    form = ChessPieceForm()
+    if request.method == "POST":
+        if form.validate_on_submit():
+            name = form.name.data
+            points = form.points.data
+
+            chess_piece = ChessPiece(name = name, points = points)
+            try:
+                db.session.add(chess_piece)
+                db.session.commit()
+                flash("Piece added successfully")
+                return redirect( url_for('main.home'))
+            except IntegrityError:
+                flash("This piece already exists")
+        else:
+            flash("Invalid form")
+    return render_template('add.html', form = form)
