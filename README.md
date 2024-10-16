@@ -1,8 +1,8 @@
 ## Excited to learn Flask!
 
-# This is just a simple project with auth functionalities and adding and retrieving chess pieces from the database
+### This is just a simple project with auth functionalities and adding and retrieving chess pieces from the database
 
-# To run the project:
+### To run the project:
 
 In the cmd:
 
